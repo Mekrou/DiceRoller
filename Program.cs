@@ -15,7 +15,6 @@ namespace DiceRoller
             int userInput;
             int sum = 0;
             
-
             PrintWelcomeMessage();
 
             userInput = HandleUserInput();
@@ -24,11 +23,13 @@ namespace DiceRoller
 
             Random rand = new Random();
             
+            // Code block is executed for every roll the player wanted
+            // i.e If player entered 3, this loop runs 3 times.
             for (int i = 0; i < userInput; i++)
             {
-                int rolledDiceResult = rand.Next(1, 6);
-                rolls[i] = rolledDiceResult;
-                sum += rolledDiceResult;
+                int rolledDiceResult = rand.Next(1, 6); // This generates and stores the dice roll.
+                rolls[i] = rolledDiceResult; // for every roll we put its result in an array to display later
+                sum += rolledDiceResult; // sum calculates the net roll.
             }
             
             Console.WriteLine($"You rolled a net: {sum}");
@@ -53,7 +54,7 @@ namespace DiceRoller
                 try
                 {
                     userInput = Convert.ToInt32(Console.ReadLine());
-                    return userInput;
+                    return userInput; // We'll exit the function and therefore the loop here.
                 } 
                 catch (FormatException)
                 {
@@ -93,7 +94,8 @@ namespace DiceRoller
 
             foreach (int element in array)
             {
-                printedArray += (element + "|");
+                printedArray += (element + "|"); // this adds each element in the array to a string 
+                                                 // that will later be used to print rolls
             }
 
             return printedArray;
